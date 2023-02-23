@@ -41,8 +41,8 @@ export default function Home() {
       <main className={styles.main}>
         {/* <img src="/dog.png" className={styles.icon} />
         <h3>Name my pet</h3> */}
-        <h3>English Grammar correction</h3>
         <form onSubmit={onSubmit}>
+          <h3>English Grammar correction</h3>
           <textarea
             className="input"
             name="animal"

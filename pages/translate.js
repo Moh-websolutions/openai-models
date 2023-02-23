@@ -39,8 +39,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h3>English to French Translation</h3>
         <form onSubmit={onSubmit}>
+        <h3>English to French Translation</h3>
+
           <textarea
             className="input"
             name="translate"
