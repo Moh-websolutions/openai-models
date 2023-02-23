@@ -127,7 +127,7 @@ export default function Home() {
         {loading && (
           <div>
             <h3>Looking for the best meal plan ideas 🍽️ 💡</h3>
-            {/* <img src="/loading.gif" className={styles.loading} /> */}
+            <img src="/loading.gif" className={styles.loading} />
           </div>
         )}
         {result && (
