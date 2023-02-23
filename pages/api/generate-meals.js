@@ -25,13 +25,5 @@ export default async function (req, res) {
 function generatePrompt(gender, age, weight, fatLose, foods) {
   return `Suggest 4 meals plan for a ${age}-year-old ${gender} with a weight of ${weight} lbs who is into ${foods}, to lose ${fatLose} lbs per week.
  
-  Breakfast: Omelette with 2 eggs, 1/4 cup diced chicken, 1/4 cup diced vegetables, and 1/4 cup cooked brown rice
-  
-  Lunch: Grilled chicken salad with 3 ounces of grilled chicken, 1/2 cup cooked brown rice, 1/2 cup of vegetables, and a light vinaigrette.
-  
-  Dinner: Beef stir-fry with 3 ounces of beef, 1/2 cup cooked brown rice, 1/2 cup of vegetables, and a light sauce.
-  
-  Snack: Yogurt with 1/2 cup of fresh fruit.
- 
   `;
 }
