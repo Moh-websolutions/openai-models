@@ -50,7 +50,7 @@ export default function Home() {
       <main className={styles.main}>
 
         <form onSubmit={onSubmit}>
-          <div className={styles.textcenter}><h3> 🍽️ Generate a daily meal plan</h3></div>
+          <div className={styles.textcenter}><h3> 🍽️ Generate a daily meal plan.</h3></div>
 
           <label>Gender</label>
           <select
