@@ -85,7 +85,7 @@ export default function Home() {
           <label>How many pounds do you want to lose per week <small>(maximum of 5 pounds per week)</small>?</label>
           <input
             type="number"
-            min={1}
+            min={0}
             max={5}
             name="fatLose"
             placeholder="Enter the number of pounds to lose per week"
