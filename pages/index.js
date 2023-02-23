@@ -1,3 +1,3 @@
-import Grammar from "./grammar-correction";
+import Meals from "./meals";
 
-export default Grammar;
+export default Meals;
