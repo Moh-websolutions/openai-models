@@ -1,4 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
+import Meals from "..";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -22,5 +23,7 @@ export default async function (req, res) {
 }
 
 function generatePrompt(gender, age, weight, fatLose, foods) {
-  return `suggest 7 meal plan ideas for the week to help lose ${fatLose} LBS per week for a ${age} years old ${gender} with weight of ${weight} LBS that is into ${foods}`;
+  return `Suggest from Monday to Sunday a meal plan for a ${age}-year-old ${gender} with a weight of ${weight} lbs who is into ${foods}, to lose ${fatLose} lbs per week.
+  
+  `;
 }
