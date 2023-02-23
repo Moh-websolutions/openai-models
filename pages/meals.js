@@ -6,10 +6,10 @@ import styles from "./index.module.css";
 export default function Home() {
   const [gender, setGender] = useState("man");
   const [age, setAge] = useState(25);
-  const [priceMin, setPriceMin] = useState(25);
-  const [priceMax, setPriceMax] = useState(100);
+  // const [priceMin, setPriceMin] = useState(25);
+  // const [priceMax, setPriceMax] = useState(100);
   const [weight, setWeight] = useState(175);
-  const [fatLose, setFatLose] = useState(5);
+  const [fatLose, setFatLose] = useState(0);
   const [foods, setFoods] = useState("");
 
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ priceMin, priceMax, gender, age, weight, fatLose, foods }),
+        body: JSON.stringify({gender, age, weight, fatLose, foods }),
       });
       const data = await response.json();
       setResult(data.result.replaceAll("\n", "<br />"));
@@ -92,7 +92,7 @@ export default function Home() {
             value={fatLose}
             onChange={(e) => setFatLose(Number.parseInt(e.target.value))}
           />
-
+{/* 
           <label>Price from</label>
           <input
             type="number"
@@ -111,7 +111,7 @@ export default function Home() {
             placeholder="Enter the maximum price"
             value={priceMax}
             onChange={(e) => setPriceMax(Number.parseInt(e.target.value))}
-          />
+          /> */}
 
           <label>Foods you like to eat </label>
           <input
