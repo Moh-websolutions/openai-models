@@ -15,11 +15,11 @@ export default async function (req, res) {
     return;
   }
 
-  const animal = req.body.animal || '';
-  if (animal.trim().length === 0) {
+  const translate = req.body.translate || '';
+  if (translate.trim().length === 0) {
     res.status(400).json({
       error: {
-        message: "Please enter a valid animal",
+        message: "Please enter a valid English sentence",
       }
     });
     return;
@@ -28,7 +28,7 @@ export default async function (req, res) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(animal),
+      prompt: translatePrompt(translate),
       temperature: 0.3,
       max_tokens: 100,
       top_p: 1,
@@ -52,10 +52,10 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(animal) {
+function translatePrompt(translate) {
   const capitalizedAnimal =
-    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Correct this to standard English:\n\n${capitalizedAnimal}.
+    translate[0].toUpperCase() + translate.slice(1).toLowerCase();
+  return `Translate this into French:\n\n${capitalizedAnimal}.
  
 
  `;
