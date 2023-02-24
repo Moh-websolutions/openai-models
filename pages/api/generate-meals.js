@@ -15,7 +15,7 @@ export default async function (req, res) {
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: prompt,
-    temperature: 1,
+    temperature: 0.6,
     max_tokens: 2048,
   });
 
@@ -23,9 +23,8 @@ export default async function (req, res) {
 }
 
 function generatePrompt(gender, age, weight, fatLose, foods) {
-  return `Write four meal plans for Monday-Tuesday then Wednesday-Thursday and Friday-Sunday: to help lose fat for a man or woman who is into ${foods}
-
-   
+  return `Write three meal plans for the week that may include ${foods}
+ 
   1. Breakfast: Omelet with 2 eggs, 1/4 cup diced onion, 1/4 cup diced bell pepper, 1/4 cup diced mushrooms, 1/4 cup diced chicken, and 2 tablespoons shredded cheese.
   2. Lunch: Chicken and vegetable stir-fry with 1 cup cooked brown rice.
   3. Snack: Greek yogurt with 1/4 cup diced strawberries and 1/4 cup granola.
