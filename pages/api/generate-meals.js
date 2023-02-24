@@ -23,6 +23,6 @@ export default async function (req, res) {
 }
 
 function generatePrompt(gender, age, weight, fatLose, foods) {
-  return `Suggest 4 meals plan per day for a ${age}-year-old ${gender} with a weight of ${weight} lbs who is into ${foods}
+  return `Write four meal plans for each day of the week to help lose fat for a ${age}-year-old ${gender} with a weight of ${weight} lbs who is into ${foods}
   `;
 }
