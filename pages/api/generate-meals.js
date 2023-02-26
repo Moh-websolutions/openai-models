@@ -15,19 +15,25 @@ export default async function (req, res) {
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: prompt,
-    temperature: 0.6,
+    temperature: 0.7,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
     max_tokens: 2048,
+    n: 1,
   });
 
   res.status(200).json({ result: completion.data.choices[0].text });
 }
 
 function generatePrompt(gender, age, weight, fatLose, foods) {
-  return `Write three meal plans for the week that may include ${foods}
- 
-  1. Breakfast: Omelet with 2 eggs, 1/4 cup diced onion, 1/4 cup diced bell pepper, 1/4 cup diced mushrooms, 1/4 cup diced chicken, and 2 tablespoons shredded cheese.
-  2. Lunch: Chicken and vegetable stir-fry with 1 cup cooked brown rice.
-  3. Snack: Greek yogurt with 1/4 cup diced strawberries and 1/4 cup granola.
-  4. Dinner: Baked chicken breast with 1/2 cup cooked quinoa and roasted vegetables.
+  return `Suggest meal plans for Monday, Tuesday, Wednesday, Thursday, and Friday that may include breakfast, lunch, a snack, and dinner with ${foods} when possible.
+
+  Sunday:
+
+  meal #1 Breakfast: Overnight oats with 1/2 cup oats, 1/2 cup Greek yogurt, 1/4 cup diced strawberries, 1/4 cup diced blueberries, and 1 tablespoon honey.
+  meal #2 Lunch: Turkey and avocado wrap with 1/4 cup diced turkey, 1/4 avocado, 1/4 cup diced tomatoes, and 1/4 cup diced cucumbers in a whole wheat wrap.
+  meal #3 Snack: Apple slices with 1 tablespoon of almond butter.
+  meal #4 Dinner: Baked salmon with 1/2 cup cooked quinoa and roasted Brussels sprouts.
   `;
 }
