@@ -1,3 +1,3 @@
-import Meals from "./meals";
+import Chat from "./chat";
 
-export default Meals;
+export default Chat;

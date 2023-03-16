@@ -4,8 +4,8 @@ import styles from "./index.module.css";
 
 export default function Home() {
   const [chatInput, setChatInput] = useState("");
-  const [result, setResult] = useState("");
-  const resultRef = useRef(null);
+  const [result, setResult] = useState();
+  const messagesEndRef = useRef(null);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -23,18 +23,21 @@ export default function Home() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
-      setResult((prevResult) => prevResult ? prevResult + "\n" + data.result : data.result);
+      setResult((prevResult) =>
+        prevResult ? prevResult + "\n" + data.result : data.result
+      );
       setChatInput("");
       scrollToBottom();
     } catch (error) {
+      // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
     }
   }
 
-  function scrollToBottom() {
-    resultRef.current.scrollIntoView({ behavior: "smooth" });
-  }
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div>
@@ -49,8 +52,8 @@ export default function Home() {
           id="generated-meals"
           className={styles.result}
           dangerouslySetInnerHTML={{ __html: result }}
-          ref={resultRef}
         />
+        <div ref={messagesEndRef}></div>
         <form onSubmit={onSubmit}>
           <input
             type="text"
@@ -62,6 +65,7 @@ export default function Home() {
           />
           <input type="submit" value="submit" />
         </form>
+        {/* <div className={styles.result}>{result}</div> */}
       </main>
     </div>
   );
