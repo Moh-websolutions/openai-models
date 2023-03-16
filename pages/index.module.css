@@ -25,10 +25,11 @@
 }
 .main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding-top: 60px;
   width: 100%;
   justify-content: center;
+  align-items: center;
 }
 .main .icon {
   width: 34px;
@@ -43,8 +44,10 @@
 .main form {
   display: flex;
   flex-direction: column;
-  width: 320px;
-  padding-right: 25px;
+  width: 90%;
+  padding: 0;
+  position: fixed;
+  bottom: 12px;
 }
 .main input[type="text"],
 .main input[type="number"],
@@ -76,10 +79,19 @@
   cursor: pointer;
 }
 .main .result {
-  display: flex;
-  flex-direction: column;
-  width: 320px;
+  display: block;
+  width: 80%;
+  margin: 25px;
   font-weight: bold;
-  margin-top: 40px;
-  padding-left: 25px;
+  height: 300px;
+  overflow: auto;
+  overflow-x: hidden;
+  border: 1px solid #eee;
+  position: absolute;
+  bottom: 113px;
+  padding: 15px;
+  border-radius: 15px;
+}
+.gray {
+  color: #8e8ea0;
 }

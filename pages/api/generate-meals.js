@@ -16,18 +16,14 @@ export default async function (req, res) {
     model: "text-davinci-003",
     prompt: prompt,
     temperature: 0.7,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
-    max_tokens: 2048,
-    n: 1,
+    max_tokens: 1000, 
   });
 
   res.status(200).json({ result: completion.data.choices[0].text });
 }
 
 function generatePrompt(gender, age, weight, fatLose, foods) {
-  return `Suggest meal plans for Monday, Tuesday, Wednesday, Thursday, and Friday that may include breakfast, lunch, a snack, and dinner with ${foods} when possible.
+  return `Generate 3 meal plans for Monday to Friday. Make sure there breakfast, lunch, a snack, and base it on this context:${foods}.  when possible.
 
   Sunday:
 
