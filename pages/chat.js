@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
@@ -17,27 +17,24 @@ export default function Home() {
         },
         body: JSON.stringify({ chat: chatInput }),
       });
-
+  
       const data = await response.json();
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-
-      setResult((prevResult) =>
-        prevResult ? prevResult + "\n" + data.result : data.result
-      );
+  
+      setResult(prevResult => prevResult ? prevResult + "\n" + data.result : data.result);
       setChatInput("");
-      scrollToBottom();
-    } catch (error) {
+    } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
     }
   }
-
-  const scrollToBottom = () => {
+  
+  useEffect(() => {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-  };
+  }, [result]);
 
   return (
     <div>
@@ -53,7 +50,7 @@ export default function Home() {
           className={styles.result}
           dangerouslySetInnerHTML={{ __html: result }}
         />
-        <div ref={messagesEndRef}></div>
+        <div ref={messagesEndRef} />
         <form onSubmit={onSubmit}>
           <input
             type="text"
@@ -65,7 +62,6 @@ export default function Home() {
           />
           <input type="submit" value="submit" />
         </form>
-        {/* <div className={styles.result}>{result}</div> */}
       </main>
     </div>
   );

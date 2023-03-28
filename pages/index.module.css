@@ -83,15 +83,14 @@
   width: 80%;
   margin: 25px;
   font-weight: bold;
-  height: 300px;
+  max-height: 300px;
   overflow: auto;
   overflow-x: hidden;
   border: 1px solid #eee;
-  position: absolute;
-  bottom: 113px;
   padding: 15px;
   border-radius: 15px;
 }
+
 .gray {
   color: #8e8ea0;
 }
